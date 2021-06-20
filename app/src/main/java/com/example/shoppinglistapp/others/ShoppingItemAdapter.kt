@@ -35,7 +35,7 @@ class ShoppingItemAdapter(
 
     override fun onBindViewHolder(holder: ShoppingViewHolder, position: Int) {
 
-        val curShoppingItem : ShoppingItem = items[position]
+        val curShoppingItem: ShoppingItem = items[position]
         val viewModel: ShoppingViewModal = viewModal
 
         holder.tvName.text = curShoppingItem.name
@@ -47,13 +47,13 @@ class ShoppingItemAdapter(
         }
 
         holder.ivPlus.setOnClickListener {
-            curShoppingItem.amount!!.plus(1)
+            curShoppingItem.amount += 1
             viewModel.upsert(curShoppingItem)
         }
 
         holder.ivMinus.setOnClickListener {
-            if (curShoppingItem.amount!! > 0) {
-                curShoppingItem.amount!!.minus(1)
+            if (curShoppingItem.amount > 0) {
+                curShoppingItem.amount -= 1
                 viewModel.upsert(curShoppingItem)
             }
         }
